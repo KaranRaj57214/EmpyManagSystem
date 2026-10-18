@@ -67,13 +67,13 @@ const AddEmployee = () => {
     }
 
     return (
-        <div className="bg-[#1c1c1c] p-5 mt-5 rounded">
+        <div className='w-full min-w-0 bg-[#1c1c1c] p-4 sm:p-5 mt-5 rounded-lg border border-gray-700'>
 
             <button
-                type="button"
+                type='button'
                 onClick={() => setShowForm(!showForm)}
-                className="bg-emerald-500 hover:bg-emerald-600
-                text-white px-5 py-3 rounded text-sm font-medium"
+                aria-expanded={showForm}
+                className='w-full sm:w-auto bg-emerald-500 hover:bg-emerald-600 active:bg-emerald-700 text-white px-5 py-3 rounded-md text-sm font-medium transition-colors'
             >
                 {showForm ? 'Cancel' : '+ Add Employee'}
             </button>
@@ -81,60 +81,73 @@ const AddEmployee = () => {
             {showForm && (
                 <form
                     onSubmit={handleSubmit}
-                    className="flex flex-wrap gap-4 mt-5"
+                    className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 mt-5'
                 >
-                    <div className="w-full md:w-[30%]">
-                        <label className="block text-sm text-gray-300 mb-2">
+                    <div className='min-w-0'>
+                        <label
+                            htmlFor='employeeName'
+                            className='block text-sm text-gray-300 mb-2'
+                        >
                             Employee Name
                         </label>
                         <input
+                            id='employeeName'
                             required
                             value={firstName}
                             onChange={e => setFirstName(e.target.value)}
-                            placeholder="Enter employee name"
-                            className="w-full p-2 rounded bg-transparent
-                            border border-gray-500 outline-none"
+                            placeholder='Enter employee name'
+                            autoComplete='name'
+                            className='w-full min-w-0 p-3 rounded-md bg-transparent text-white border border-gray-500 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none'
                         />
                     </div>
 
-                    <div className="w-full md:w-[30%]">
-                        <label className="block text-sm text-gray-300 mb-2">
+                    <div className='min-w-0'>
+                        <label
+                            htmlFor='employeeEmail'
+                            className='block text-sm text-gray-300 mb-2'
+                        >
                             Email
                         </label>
                         <input
+                            id='employeeEmail'
                             required
-                            type="email"
+                            type='email'
                             value={email}
                             onChange={e => setEmail(e.target.value)}
-                            placeholder="employee@example.com"
-                            className="w-full p-2 rounded bg-transparent
-                            border border-gray-500 outline-none"
+                            placeholder='employee@example.com'
+                            autoComplete='email'
+                            className='w-full min-w-0 p-3 rounded-md bg-transparent text-white border border-gray-500 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none'
                         />
                     </div>
 
-                    <div className="w-full md:w-[30%]">
-                        <label className="block text-sm text-gray-300 mb-2">
+                    <div className='min-w-0'>
+                        <label
+                            htmlFor='employeePassword'
+                            className='block text-sm text-gray-300 mb-2'
+                        >
                             Password
                         </label>
                         <input
+                            id='employeePassword'
                             required
-                            type="password"
+                            type='password'
                             minLength={3}
                             value={password}
                             onChange={e => setPassword(e.target.value)}
-                            placeholder="Create password"
-                            className="w-full p-2 rounded bg-transparent
-                            border border-gray-500 outline-none"
+                            placeholder='Create password'
+                            autoComplete='new-password'
+                            className='w-full min-w-0 p-3 rounded-md bg-transparent text-white border border-gray-500 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none'
                         />
                     </div>
 
-                    <button
-                        type="submit"
-                        className="bg-blue-500 hover:bg-blue-600
-                        text-white px-5 py-2 rounded text-sm"
-                    >
-                        Save Employee
-                    </button>
+                    <div className='col-span-1 md:col-span-2 xl:col-span-3'>
+                        <button
+                            type='submit'
+                            className='w-full sm:w-auto bg-blue-500 hover:bg-blue-600 active:bg-blue-700 text-white px-6 py-3 rounded-md text-sm font-medium transition-colors'
+                        >
+                            Save Employee
+                        </button>
+                    </div>
                 </form>
             )}
         </div>
